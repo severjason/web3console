@@ -2,7 +2,7 @@ import React from 'react';
 import Main from 'src/features/main'
 import useSetupWeb3, { Web3Context } from './hooks/use-setup-web3';
 import useSetupState , { StateContext } from './hooks/use-setup-state';
-import {Layout} from './common';
+import { Layout } from './common';
 
 function App() {
   const web3 = useSetupWeb3();

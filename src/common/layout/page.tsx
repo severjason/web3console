@@ -1,12 +1,17 @@
-import React from 'react';
 import Grid from '@mui/material/Grid';
+import React from 'react';
+import { NAV_PADDING } from '../../constants/styles';
+import { Nav } from '../index';
 
-const PageLayout:React.FC = ({children}) => {
+const PageLayout: React.FC = ({ children }) => {
   return (
-    <Grid container flex={1} flexDirection="column" p={2} sx={{minHeight: '100vh'}} justifyContent="center">
-      {children}
+    <Grid sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
+      <Nav />
+      <Grid sx={{ paddingLeft: {xs: 0, sm: `${NAV_PADDING}px`}, minHeight: '100vh' }} justifyContent='center'>
+        {children}
+      </Grid>
     </Grid>
   );
-}
+};
 
 export default PageLayout;

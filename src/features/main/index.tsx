@@ -41,6 +41,7 @@ function Main() {
     e.preventDefault();
     if (web3) {
       try {
+        //eslint-disable-next-line
         const tokenType = new web3.eth.Contract(tokenAbi as any, state.tokenAddress);
         const balance = await tokenType.methods.balanceOf(state.userTokenAddress).call();
         const symbol = await tokenType.methods.symbol().call();
@@ -62,7 +63,7 @@ function Main() {
   }, [state, web3]);
 
   return (
-    <>
+    <Grid container flex={1} flexDirection='column' p={2}>
       <form onSubmit={onAddressSubmit}>
         <Grid container pt={1} pb={1}>
           <TextField
@@ -127,7 +128,7 @@ function Main() {
         </Grid>
       </form>
       <TransferForm/>
-    </>
+    </Grid>
   );
 }
 
