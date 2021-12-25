@@ -44,7 +44,6 @@ function TransferForm() {
         handleState('value', 0);
         handleState('loading', false);
       } catch (e) {
-        console.log(e)
         alert(JSON.stringify(e));
         handleState('loading', false);
       }
@@ -58,7 +57,9 @@ function TransferForm() {
       try {
         const { to, from, value, tokenAddress } = state;
         handleState('loading', true);
+        //eslint-disable-next-line
         const contract = new web3.eth.Contract(baseAbi as any, tokenAddress);
+        //eslint-disable-next-line
         const res = await (contract as any).methods.transfer(to, value).send({
           from
         });
@@ -67,7 +68,6 @@ function TransferForm() {
         handleState('value', 0);
         handleState('loading', false);
       } catch (e) {
-        console.log(e)
         alert(JSON.stringify(e));
         handleState('loading', false);
       }
@@ -78,6 +78,7 @@ function TransferForm() {
   const onGetSymbol = useCallback(async (address: string) => {
     if (web3) {
       try {
+        //eslint-disable-next-line
         const tokenType = new web3.eth.Contract(baseAbi as any, address);
         const symbol = await tokenType.methods.symbol().call();
         handleState('tokenSymbol', symbol)
